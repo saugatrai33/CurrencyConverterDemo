@@ -1,7 +1,7 @@
 # CurrencyConverterDemo
 Using Currency Layer API with
 
-* Kotlin Coroutinne
+* Kotlin Coroutine
 * Dagger
 * Retrofit
 * MVVM with Arch Component
