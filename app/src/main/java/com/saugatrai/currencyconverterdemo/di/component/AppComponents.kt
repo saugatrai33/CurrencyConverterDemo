@@ -1,13 +1,11 @@
 package com.saugatrai.currencyconverterdemo.di.component
 
 import android.content.Context
+import com.saugatrai.currencyconverterdemo.data_source.local.db.AppDb
+import com.saugatrai.currencyconverterdemo.data_source.local.db.QuoteDao
+import com.saugatrai.currencyconverterdemo.di.module.*
 import com.saugatrai.currencyconverterdemo.ui.main.MainActivity
-import com.saugatrai.currencyconverterdemo.di.module.AppModule
-import com.saugatrai.currencyconverterdemo.di.module.CoroutinesModule
-import com.saugatrai.currencyconverterdemo.di.module.NetworkModule
-import com.saugatrai.currencyconverterdemo.di.module.RepositoryModule
 import dagger.Component
-import retrofit2.Retrofit
 import javax.inject.Singleton
 
 @Singleton
@@ -15,11 +13,16 @@ import javax.inject.Singleton
     modules = [AppModule::class,
         NetworkModule::class,
         RepositoryModule::class,
-        CoroutinesModule::class]
+        CoroutinesModule::class,
+    DatabaseModule::class]
 )
 interface AppComponents {
 
     fun context(): Context
+
+    fun appDb(): AppDb
+
+    fun quoteDao(): QuoteDao
 
     fun inject(mainActivity: MainActivity)
 }

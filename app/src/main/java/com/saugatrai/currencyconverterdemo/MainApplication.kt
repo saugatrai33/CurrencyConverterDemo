@@ -5,6 +5,7 @@ import com.facebook.stetho.Stetho
 import com.saugatrai.currencyconverterdemo.di.component.AppComponents
 import com.saugatrai.currencyconverterdemo.di.component.DaggerAppComponents
 import com.saugatrai.currencyconverterdemo.di.module.AppModule
+import com.saugatrai.currencyconverterdemo.di.module.DatabaseModule
 import timber.log.Timber
 
 class MainApplication : Application() {
@@ -23,6 +24,7 @@ class MainApplication : Application() {
     private fun initDagger(app: MainApplication): AppComponents =
         DaggerAppComponents.builder()
             .appModule(AppModule(app))
+            .databaseModule(DatabaseModule(app))
             .build()
 
 

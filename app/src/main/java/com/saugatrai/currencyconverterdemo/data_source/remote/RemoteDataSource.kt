@@ -1,4 +1,4 @@
-package com.saugatrai.currencyconverterdemo.data_source
+package com.saugatrai.currencyconverterdemo.data_source.remote
 
 import com.saugatrai.currencyconverterdemo.data.ResultData
 

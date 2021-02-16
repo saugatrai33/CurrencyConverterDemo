@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.saugatrai.currencyconverterdemo.R
-import com.saugatrai.currencyconverterdemo.data.Quote
+import com.saugatrai.currencyconverterdemo.data_source.local.db.Quote
 
 class CurrencyAdapter(private val quotes: List<Quote>) :
     RecyclerView.Adapter<CurrencyViewHolder>() {

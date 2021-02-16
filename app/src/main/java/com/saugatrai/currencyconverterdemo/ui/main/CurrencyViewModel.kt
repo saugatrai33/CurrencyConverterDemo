@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.saugatrai.currencyconverterdemo.data.Quote
+import com.saugatrai.currencyconverterdemo.data_source.local.db.Quote
 import com.saugatrai.currencyconverterdemo.data.ResultData
 import com.saugatrai.currencyconverterdemo.repository.AppRepository
 import kotlinx.coroutines.launch

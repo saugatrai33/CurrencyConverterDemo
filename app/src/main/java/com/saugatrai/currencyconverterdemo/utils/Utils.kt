@@ -1,6 +1,6 @@
 package com.saugatrai.currencyconverterdemo.utils
 
-import com.saugatrai.currencyconverterdemo.data.Quote
+import com.saugatrai.currencyconverterdemo.data_source.local.db.Quote
 import org.json.JSONObject
 
 object Utils {
