@@ -5,8 +5,8 @@ import com.saugatrai.currencyconverterdemo.data.RemoteApiErrorException
 import com.saugatrai.currencyconverterdemo.data.RemoteDataNotFoundException
 import com.saugatrai.currencyconverterdemo.data.ResultData
 import com.saugatrai.currencyconverterdemo.data_source.RemoteDataSource
+import com.saugatrai.currencyconverterdemo.utils.Utils
 import org.json.JSONObject
-import timber.log.Timber
 
 class AppRepositoryImpl(
     private val remoteDataSource: RemoteDataSource
@@ -19,19 +19,11 @@ class AppRepositoryImpl(
                     val response = JSONObject(result.data)
                     val success = response.getBoolean("success")
                     if (success) {
-                        val quotes = response.getJSONObject("quotes")
-                        val quoteList: MutableList<Quote> = mutableListOf()
-                        val quotesArray = quotes.names()
-                        for (i in 0 until quotesArray!!.length()) {
-                            val currency = quotesArray.getString(i)
-                            val rate = quotes.getString(currency)
-                            quoteList.add(Quote(currency = currency, rate = rate.toDouble()))
-                        }
+                        val quoteList = Utils.parseCurrency(response)
                         ResultData.Success(quoteList)
                     } else {
-                        val errJson = response.getJSONObject("error")
-                        val info = errJson.getString("info")
-                        ResultData.Error(RemoteApiErrorException(info))
+                        val errMsg = Utils.parseError(response)
+                        ResultData.Error(RemoteApiErrorException(errMsg))
                     }
                 } catch (e: Exception) {
                     ResultData.Error(RemoteApiErrorException(e.localizedMessage))
@@ -42,7 +34,5 @@ class AppRepositoryImpl(
             }
         }
     }
-
-
 
 }
