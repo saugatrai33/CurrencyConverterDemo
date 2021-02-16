@@ -18,7 +18,7 @@ class RepositoryModule {
     fun provideAppRepository(
         @IoDispatcher ioDispatcher: CoroutineDispatcher,
         api: CurrencyLayerAPI,
-    ): AppRepositoryImpl {
+    ): AppRepository {
         val userDataSource = RemoteDataSourceImpl(api, ioDispatcher)
         return AppRepositoryImpl(userDataSource)
     }

@@ -5,7 +5,6 @@ import com.facebook.stetho.Stetho
 import com.saugatrai.currencyconverterdemo.di.component.AppComponents
 import com.saugatrai.currencyconverterdemo.di.component.DaggerAppComponents
 import com.saugatrai.currencyconverterdemo.di.module.AppModule
-import com.saugatrai.currencyconverterdemo.utils.InternetUtil
 import timber.log.Timber
 
 class MainApplication : Application() {
@@ -19,7 +18,6 @@ class MainApplication : Application() {
         appComponents = initDagger(this)
         initStetho()
         initTimber()
-        InternetUtil.init(this)
     }
 
     private fun initDagger(app: MainApplication): AppComponents =

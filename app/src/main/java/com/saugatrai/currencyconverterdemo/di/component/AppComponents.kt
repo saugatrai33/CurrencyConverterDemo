@@ -21,7 +21,5 @@ interface AppComponents {
 
     fun context(): Context
 
-    fun retrofit(): Retrofit
-
     fun inject(mainActivity: MainActivity)
 }

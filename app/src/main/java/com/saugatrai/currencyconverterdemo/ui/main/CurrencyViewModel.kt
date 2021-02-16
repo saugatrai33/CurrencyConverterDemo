@@ -6,11 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.saugatrai.currencyconverterdemo.data.Quote
 import com.saugatrai.currencyconverterdemo.data.ResultData
-import com.saugatrai.currencyconverterdemo.repository.AppRepositoryImpl
+import com.saugatrai.currencyconverterdemo.repository.AppRepository
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class CurrencyViewModel @Inject constructor(private val appRepositoryImpl: AppRepositoryImpl) :
+class CurrencyViewModel @Inject constructor(private val appRepository: AppRepository) :
     ViewModel() {
 
     private var _currency = MutableLiveData<List<Quote>>()
@@ -26,7 +26,7 @@ class CurrencyViewModel @Inject constructor(private val appRepositoryImpl: AppRe
         _showLoading.postValue(true)
         viewModelScope.launch {
             try {
-                when (val result = appRepositoryImpl.getCurrency()) {
+                when (val result = appRepository.getCurrency()) {
                     is ResultData.Success -> {
                         _showLoading.postValue(false)
                         _currency.postValue(result.data)

@@ -22,11 +22,7 @@ class MainActivity : AppCompatActivity() {
     private val appComponents by lazy { MainApplication.appComponents }
 
     @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    private fun getCurrencyViewModel(): CurrencyViewModel {
-        return viewModelProvider(viewModelFactory)
-    }
+    lateinit var currencyViewModel: CurrencyViewModel
 
     private lateinit var mProgressBar: ProgressBar
     private lateinit var mQuoteList: RecyclerView
@@ -42,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        getCurrencyViewModel().getCurrency()
+        currencyViewModel.getCurrency()
     }
 
     private fun setUpUI() {
@@ -51,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpObserver() {
-        getCurrencyViewModel().currency.observe(this,
+        currencyViewModel.currency.observe(this,
             { quotes ->
                 run {
                     mQuoteList.visibility = View.VISIBLE
@@ -65,7 +61,7 @@ class MainActivity : AppCompatActivity() {
                 }
             })
 
-        getCurrencyViewModel().errMsg.observe(this,
+        currencyViewModel.errMsg.observe(this,
             { errMsg ->
                 run {
                     mQuoteList.visibility = View.GONE
@@ -73,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                     this.toast(errMsg)
                 }
             })
-        getCurrencyViewModel().showLoading.observe(this,
+        currencyViewModel.showLoading.observe(this,
             { showLoading ->
                 run {
                     mQuoteList.visibility = View.GONE
