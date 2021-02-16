@@ -4,6 +4,7 @@ Using Currency Layer API with
 * Kotlin Coroutine
 * Dagger
 * Retrofit
+* Room Database
 * MVVM with Arch Component
 
 ## Getting Started
