@@ -1,6 +1,11 @@
 package com.saugatrai.currencyconverterdemo.utils
 
+import com.saugatrai.currencyconverterdemo.data.RemoteApiErrorException
+import com.saugatrai.currencyconverterdemo.data.RemoteDataNotFoundException
+import com.saugatrai.currencyconverterdemo.data.ResultData
+import com.saugatrai.currencyconverterdemo.data_source.local.LocalDataSource
 import com.saugatrai.currencyconverterdemo.data_source.local.db.Quote
+import com.saugatrai.currencyconverterdemo.data_source.remote.RemoteDataSource
 import org.json.JSONObject
 
 object Utils {
